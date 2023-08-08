@@ -14,7 +14,7 @@ describe('Counter test', () => {
         expect(headerElement).toBeInTheDocument();
     });
 
-    test('click handlers are called', () => {
+    test('click handlers are called', async () => {
         const incrementHandler = jest.fn();
         const decrementHandler = jest.fn();
 
@@ -30,8 +30,8 @@ describe('Counter test', () => {
             name: 'Decrement'
         });
 
-        user.click(incrementButton);
-        user.click(decrementButton);
+        await user.click(incrementButton);
+        await user.click(decrementButton);
 
         expect(incrementHandler).toHaveBeenCalledTimes(1);
         expect(decrementHandler).toHaveBeenCalledTimes(1);

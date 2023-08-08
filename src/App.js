@@ -1,14 +1,27 @@
 import './App.css';
-import Application from './components/application/Application';
+import PostUsers from './components/post/PostUsers';
+// import Muimode from './components/mui/Muimode';
+// import Application from './components/application/Application';
+// import Counter2 from './components/counter/Counter2';
+// import Greet from './components/greet/Greet';
+import Appprovider from './components/providers/Appprovider';
 import Users from './components/users/Users';
 
 function App() {
   return (
-    <div className="App">
-        
-        <Users />
+    <Appprovider>
+      <div className="App">
+        <PostUsers />
 
-        <Application />
+        {/* <Muimode /> */}
+
+        {/* <Greet />
+
+        <Counter2 /> */}
+        
+        {/* <Users /> */}
+
+        {/* <Application /> */}
 
         <a
           className="App-link"
@@ -18,7 +31,8 @@ function App() {
         >
           Learn React
         </a>
-    </div>
+      </div>
+    </Appprovider>
   );
 }
 

@@ -1,33 +1,34 @@
 import React, { useState, useEffect } from "react";
+import axios from "axios";
 
 function Users(){
-
     const [ users, setUsers ] = useState([]);
-    const [ error, setError ] = useState('');
+    const [ errorMessage, setErrorMessage ] = useState('');
 
     useEffect(() => {
-        fetch("https://jsonplaceholder.typicode.com/users")
+        axios.get("https://jsonplaceholder.typicode.com/posts")
             .then(response => {
-                setUsers(response.data.json());
-                setError('');
+                setUsers(response.data);
+                setErrorMessage('');
+                console.log(response);
             })
             .catch(() => {
-                setError("Error fetching data");
-                setUsers([]);
+                setErrorMessage("Error fetching data");
+                setUsers('');
             })
-    }, [users]);
+    }, []);
 
     return(
         <div>
-            <h2>Users</h2>
-            {error && <p>{error}</p>}
-
+            <h2>Users List</h2>
+            {
+                errorMessage && <p>{errorMessage}</p>
+            }
             <ul>
-                {
-                    users.map(user => {
-                        return <li key={user.id}>{user.name}</li>
-                    })
-                }
+            {
+                users?.length > 0 &&
+                users.map(user => <li key={user.id}>{user.title}</li>)
+            }
             </ul>
         </div>
     );
